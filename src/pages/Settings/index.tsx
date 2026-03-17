@@ -1062,14 +1062,14 @@ export function Settings() {
                 <Button
                   variant="link"
                   className="h-auto p-0 text-[14px] text-blue-500 hover:text-blue-600 font-medium"
-                  onClick={() => window.electron.openExternal('https://github.com/evan5208/-')}
+                  onClick={() => window.electron.openExternal('https://github.com/evan5208/laolv')}
                 >
                   {t('about.docs')}
                 </Button>
                 <Button
                   variant="link"
                   className="h-auto p-0 text-[14px] text-blue-500 hover:text-blue-600 font-medium"
-                  onClick={() => window.electron.openExternal('https://github.com/evan5208/-')}
+                  onClick={() => window.electron.openExternal('https://github.com/evan5208/laolv')}
                 >
                   {t('about.github')}
                 </Button>

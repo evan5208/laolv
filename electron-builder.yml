@@ -3,7 +3,7 @@ productName: 老驴
 executableName: laolv
 copyright: Copyright © 2026 老驴
 compression: maximum
-artifactName: ${productName}-${version}-${os}-${arch}.${ext}
+artifactName: laolv-${version}-${os}-${arch}.${ext}
 
 directories:
   output: release
@@ -52,7 +52,7 @@ npmRebuild: false
 publish:
   - provider: github
     owner: evan5208
-    repo: "-"
+    repo: "laolv"
 
 # macOS Configuration
 mac:

@@ -6,7 +6,7 @@ if /i "%1"=="update" (
     echo.
     echo To update openclaw, update 老驴:
     echo   Open 老驴 ^> Settings ^> Check for Updates
-    echo   Or download the latest version from https://github.com/evan5208/-/releases
+    echo   Or download the latest version from https://github.com/evan5208/laolv/releases
     exit /b 0
 )
 

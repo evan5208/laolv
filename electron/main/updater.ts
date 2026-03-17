@@ -13,7 +13,7 @@ import { EventEmitter } from 'events';
 import { setQuitting } from './app-state';
 
 const GITHUB_UPDATE_OWNER = 'evan5208';
-const GITHUB_UPDATE_REPO = '-';
+const GITHUB_UPDATE_REPO = 'laolv';
 
 export interface UpdateStatus {
   status: 'idle' | 'checking' | 'available' | 'not-available' | 'downloading' | 'downloaded' | 'error';

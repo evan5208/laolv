@@ -176,13 +176,13 @@ export function createMenu(): void {
         {
           label: 'Documentation',
           click: async () => {
-            await shell.openExternal('https://github.com/evan5208/-');
+            await shell.openExternal('https://github.com/evan5208/laolv');
           },
         },
         {
           label: 'Report Issue',
           click: async () => {
-            await shell.openExternal('https://github.com/evan5208/-/issues');
+            await shell.openExternal('https://github.com/evan5208/laolv/issues');
           },
         },
         { type: 'separator' },
