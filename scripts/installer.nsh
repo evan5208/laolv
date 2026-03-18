@@ -89,6 +89,34 @@
   DetailPrint "Warning: PowerShell PATH update exited with code $0."
 
   _ci_done:
+
+  ; Updates can preserve an old .lnk whose target no longer exists.
+  ; Recreate shortcuts against the freshly installed executable every time.
+  !ifndef DO_NOT_CREATE_START_MENU_SHORTCUT
+    Push $newStartMenuLink
+    Call GetFileParent
+    Pop $2
+    ${if} $2 != ""
+      CreateDirectory "$2"
+    ${endIf}
+    Delete "$newStartMenuLink"
+    CreateShortCut "$newStartMenuLink" "$appExe" "" "$appExe" 0 "" "" "${APP_DESCRIPTION}"
+    ClearErrors
+    WinShell::SetLnkAUMI "$newStartMenuLink" "${APP_ID}"
+  !endif
+
+  !ifndef DO_NOT_CREATE_DESKTOP_SHORTCUT
+    ${ifNot} ${isNoDesktopShortcut}
+      Delete "$newDesktopLink"
+      CreateShortCut "$newDesktopLink" "$appExe" "" "$appExe" 0 "" "" "${APP_DESCRIPTION}"
+      ClearErrors
+      WinShell::SetLnkAUMI "$newDesktopLink" "${APP_ID}"
+    ${endIf}
+  !endif
+
+  ; Launch the current install directly on the finish page instead of relying
+  ; on a preserved shortcut target from an older installation.
+  StrCpy $launchLink "$appExe"
 !macroend
 
 !macro customUnInstall
