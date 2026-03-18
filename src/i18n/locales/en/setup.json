@@ -1,8 +1,8 @@
 {
     "steps": {
         "welcome": {
-            "title": "Welcome to 老驴",
-            "description": "Your AI assistant is ready to be configured"
+            "title": "Welcome to STEAD",
+            "description": "Complete the initial setup in minutes"
         },
         "runtime": {
             "title": "Environment Check",
@@ -17,17 +17,17 @@
             "description": "Connect a messaging platform (optional)"
         },
         "installing": {
-            "title": "Setting Up",
-            "description": "Installing essential components"
+            "title": "STEAD is preparing your local workspace",
+            "description": ""
         },
         "complete": {
-            "title": "All Set!",
-            "description": "老驴 is ready to use"
+            "title": "STEAD is ready",
+            "description": ""
         }
     },
     "welcome": {
-        "title": "Welcome to 老驴",
-        "description": "老驴 is a graphical interface for OpenClaw, making it easy to use AI assistants across your favorite messaging platforms.",
+        "title": "Welcome to STEAD",
+        "description": "Complete the initial setup in minutes",
         "features": {
             "noCommand": "Zero command-line required",
             "modernUI": "Modern, beautiful interface",
@@ -93,7 +93,7 @@
     },
     "installing": {
         "title": "Installing Essential Components",
-        "subtitle": "Setting up the tools needed to power your AI assistant",
+        "subtitle": "STEAD is preparing your local workspace",
         "progress": "Progress",
         "status": {
             "pending": "Pending",
@@ -107,8 +107,8 @@
         "skip": "Skip this step"
     },
     "complete": {
-        "title": "Setup Complete!",
-        "subtitle": "老驴 is configured and ready to use. You can now start chatting with your AI assistant.",
+        "title": "STEAD is ready",
+        "subtitle": "",
         "provider": "AI Provider",
         "components": "Components",
         "gateway": "Gateway",

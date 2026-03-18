@@ -248,7 +248,9 @@ export function Setup() {
           >
             <div className="text-center mb-8">
               <h1 className="text-3xl font-bold mb-2">{t(`steps.${step.id}.title`)}</h1>
-              <p className="text-slate-400">{t(`steps.${step.id}.description`)}</p>
+              {t(`steps.${step.id}.description`) ? (
+                <p className="text-slate-400">{t(`steps.${step.id}.description`)}</p>
+              ) : null}
             </div>
 
             {/* Step-specific content */}
@@ -320,7 +322,7 @@ export function Setup() {
 // ==================== Step Content Components ====================
 
 function WelcomeContent() {
-  const { t } = useTranslation(['setup', 'settings']);
+  const { t } = useTranslation('setup');
   const { language, setLanguage } = useSettingsStore();
 
   return (
@@ -328,10 +330,6 @@ function WelcomeContent() {
       <div className="mb-4 flex justify-center">
         <img src={brandIcon} alt="老驴" className="h-20 w-20 rounded-[24px] shadow-xl" />
       </div>
-      <h2 className="text-xl font-semibold">{t('welcome.title')}</h2>
-      <p className="text-muted-foreground">
-        {t('welcome.description')}
-      </p>
 
       {/* Language Selector */}
       <div className="flex justify-center gap-2 py-2">
@@ -1639,10 +1637,6 @@ function InstallingContent({ skills, onComplete, onSkip }: InstallingContentProp
     <div className="space-y-6">
       <div className="text-center">
         <div className="text-4xl mb-4">⚙️</div>
-        <h2 className="text-xl font-semibold mb-2">{t('installing.title')}</h2>
-        <p className="text-muted-foreground">
-          {t('installing.subtitle')}
-        </p>
       </div>
 
       {/* Progress bar */}
@@ -1746,10 +1740,6 @@ function CompleteContent({ selectedProvider, installedSkills }: CompleteContentP
   return (
     <div className="text-center space-y-6">
       <div className="text-6xl mb-4">🎉</div>
-      <h2 className="text-xl font-semibold">{t('complete.title')}</h2>
-      <p className="text-muted-foreground">
-        {t('complete.subtitle')}
-      </p>
 
       <div className="space-y-3 text-left max-w-md mx-auto">
         <div className="flex items-center justify-between p-3 rounded-lg bg-muted/50">

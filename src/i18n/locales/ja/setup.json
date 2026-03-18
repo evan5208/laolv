@@ -1,8 +1,8 @@
 {
     "steps": {
         "welcome": {
-            "title": "老驴へようこそ",
-            "description": "AIアシスタントの設定準備が整いました"
+            "title": "ステッドへようこそ",
+            "description": "数分で初期設定を完了できます"
         },
         "runtime": {
             "title": "環境チェック",
@@ -17,17 +17,17 @@
             "description": "メッセージングプラットフォームを接続（オプション）"
         },
         "installing": {
-            "title": "セットアップ中",
-            "description": "必須コンポーネントをインストール中"
+            "title": "ステッドがローカル環境を準備しています",
+            "description": ""
         },
         "complete": {
-            "title": "完了！",
-            "description": "老驴を使用する準備が整いました"
+            "title": "ステッドの準備が完了しました",
+            "description": ""
         }
     },
     "welcome": {
-        "title": "老驴へようこそ",
-        "description": "老驴はOpenClawのグラフィカルインターフェースで、お気に入りのメッセージングプラットフォームでAIアシスタントを簡単に使用できます。",
+        "title": "ステッドへようこそ",
+        "description": "数分で初期設定を完了できます",
         "features": {
             "noCommand": "コマンドライン不要",
             "modernUI": "モダンで美しいインターフェース",
@@ -93,7 +93,7 @@
     },
     "installing": {
         "title": "必須コンポーネントをインストール中",
-        "subtitle": "AIアシスタントに必要なツールをセットアップしています",
+        "subtitle": "ステッドがローカル環境を準備しています",
         "progress": "進捗",
         "status": {
             "pending": "待機中",
@@ -107,8 +107,8 @@
         "skip": "この手順をスキップ"
     },
     "complete": {
-        "title": "セットアップ完了！",
-        "subtitle": "老驴の構成が完了し、使用準備が整いました。AIアシスタントとのチャットを開始できます。",
+        "title": "ステッドの準備が完了しました",
+        "subtitle": "",
         "provider": "AI プロバイダー",
         "components": "コンポーネント",
         "gateway": "ゲートウェイ",

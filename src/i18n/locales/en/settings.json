@@ -263,8 +263,9 @@
   },
   "about": {
     "title": "About",
-    "appName": "老驴",
-    "tagline": "Graphical AI Assistant",
+    "appName": "STEAD",
+    "tagline": "built to get work done",
+    "brandLine": "STEAD, built to get work done",
     "basedOn": "Based on OpenClaw",
     "version": "Version {{version}}",
     "docs": "Website",

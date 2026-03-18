@@ -1053,9 +1053,7 @@ export function Settings() {
               {t('about.title')}
             </h2>
             <div className="space-y-3 text-[14px] text-muted-foreground">
-              <p>
-                <strong className="text-foreground font-semibold">{t('about.appName')}</strong> - {t('about.tagline')}
-              </p>
+              <p className="text-foreground font-semibold">{t('about.brandLine')}</p>
               <p>{t('about.basedOn')}</p>
               <p>{t('about.version', { version: currentVersion })}</p>
               <div className="flex gap-4 pt-3">

@@ -260,8 +260,9 @@
   },
   "about": {
     "title": "バージョン情報",
-    "appName": "老驴",
-    "tagline": "グラフィカル AI アシスタント",
+    "appName": "ステッド",
+    "tagline": "仕事を前に進める",
+    "brandLine": "ステッド、仕事を前に進める",
     "basedOn": "OpenClaw ベース",
     "version": "バージョン {{version}}",
     "docs": "公式サイト",

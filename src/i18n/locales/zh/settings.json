@@ -264,7 +264,8 @@
   "about": {
     "title": "关于",
     "appName": "老驴",
-    "tagline": "图形化 AI 助手",
+    "tagline": "把活跑起来",
+    "brandLine": "老驴，把活跑起来",
     "basedOn": "基于 OpenClaw",
     "version": "版本 {{version}}",
     "docs": "官网",

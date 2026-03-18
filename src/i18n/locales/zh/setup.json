@@ -2,7 +2,7 @@
     "steps": {
         "welcome": {
             "title": "欢迎使用老驴",
-            "description": "您的 AI 助手已准备好进行配置"
+            "description": "3 分钟完成初始配置"
         },
         "runtime": {
             "title": "环境检查",
@@ -17,17 +17,17 @@
             "description": "连接消息平台（可选）"
         },
         "installing": {
-            "title": "设置中",
-            "description": "安装必要组件"
+            "title": "老驴正在准备本地工作环境",
+            "description": ""
         },
         "complete": {
-            "title": "准备就绪！",
-            "description": "老驴已准备就绪"
+            "title": "老驴已准备就绪",
+            "description": ""
         }
     },
     "welcome": {
         "title": "欢迎使用老驴",
-        "description": "老驴是 OpenClaw 的图形界面，让您可以在喜爱的消息平台上轻松使用 AI 助手。",
+        "description": "3 分钟完成初始配置",
         "features": {
             "noCommand": "无需命令行",
             "modernUI": "现代美观的界面",
@@ -93,7 +93,7 @@
     },
     "installing": {
         "title": "安装必要组件",
-        "subtitle": "正在设置 AI 助手所需的工具",
+        "subtitle": "老驴正在准备本地工作环境",
         "progress": "进度",
         "status": {
             "pending": "等待中",
@@ -107,8 +107,8 @@
         "skip": "跳过此步骤"
     },
     "complete": {
-        "title": "设置完成！",
-        "subtitle": "老驴已配置并准备就绪。现在就可以开始和 AI 助手聊天了。",
+        "title": "老驴已准备就绪",
+        "subtitle": "",
         "provider": "AI 提供商",
         "components": "组件",
         "gateway": "网关",
