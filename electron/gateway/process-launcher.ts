@@ -101,6 +101,7 @@ export async function launchGatewayProcess(options: {
 }): Promise<{ child: Electron.UtilityProcess; lastSpawnSummary: string }> {
   const {
     openclawDir,
+    processCwd,
     entryScript,
     gatewayArgs,
     forkEnv,
@@ -112,9 +113,9 @@ export async function launchGatewayProcess(options: {
   } = options.launchContext;
 
   logger.info(
-    `Starting Gateway process (mode=${mode}, port=${options.port}, entry="${entryScript}", args="${options.sanitizeSpawnArgs(gatewayArgs).join(' ')}", cwd="${openclawDir}", bundledBin=${binPathExists ? 'yes' : 'no'}, providerKeys=${loadedProviderKeyCount}, channels=${channelStartupSummary}, proxy=${proxySummary})`,
+    `Starting Gateway process (mode=${mode}, port=${options.port}, entry="${entryScript}", args="${options.sanitizeSpawnArgs(gatewayArgs).join(' ')}", cwd="${processCwd}", packageRoot="${openclawDir}", bundledBin=${binPathExists ? 'yes' : 'no'}, providerKeys=${loadedProviderKeyCount}, channels=${channelStartupSummary}, proxy=${proxySummary})`,
   );
-  const lastSpawnSummary = `mode=${mode}, entry="${entryScript}", args="${options.sanitizeSpawnArgs(gatewayArgs).join(' ')}", cwd="${openclawDir}"`;
+  const lastSpawnSummary = `mode=${mode}, entry="${entryScript}", args="${options.sanitizeSpawnArgs(gatewayArgs).join(' ')}", cwd="${processCwd}", packageRoot="${openclawDir}"`;
 
   const runtimeEnv = { ...forkEnv };
   if (!app.isPackaged) {
@@ -133,7 +134,7 @@ export async function launchGatewayProcess(options: {
 
   return await new Promise<{ child: Electron.UtilityProcess; lastSpawnSummary: string }>((resolve, reject) => {
     const child = utilityProcess.fork(entryScript, gatewayArgs, {
-      cwd: openclawDir,
+      cwd: processCwd,
       stdio: 'pipe',
       env: runtimeEnv as NodeJS.ProcessEnv,
       serviceName: 'OpenClaw Gateway',

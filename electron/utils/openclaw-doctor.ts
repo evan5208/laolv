@@ -1,7 +1,7 @@
 import { app, utilityProcess } from 'electron';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
-import { getOpenClawDir, getOpenClawEntryPath } from './paths';
+import { getOpenClawDir, getOpenClawEntryPath, getOpenClawProcessCwd } from './paths';
 import { logger } from './logger';
 import { getUvMirrorEnv } from './uv-env';
 
@@ -70,6 +70,7 @@ async function runDoctorCommandWithArgs(
   args: string[],
 ): Promise<OpenClawDoctorResult> {
   const openclawDir = getOpenClawDir();
+  const processCwd = getOpenClawProcessCwd();
   const entryScript = getOpenClawEntryPath();
   const command = `openclaw ${args.join(' ')}`;
   const startedAt = Date.now();
@@ -84,7 +85,7 @@ async function runDoctorCommandWithArgs(
       stdout: '',
       stderr: '',
       command,
-      cwd: openclawDir,
+      cwd: processCwd,
       durationMs: Date.now() - startedAt,
       error,
     };
@@ -98,12 +99,12 @@ async function runDoctorCommandWithArgs(
   const uvEnv = await getUvMirrorEnv();
 
   logger.info(
-    `Running OpenClaw doctor (mode=${mode}, entry="${entryScript}", args="${args.join(' ')}", cwd="${openclawDir}", bundledBin=${binPathExists ? 'yes' : 'no'})`,
+    `Running OpenClaw doctor (mode=${mode}, entry="${entryScript}", args="${args.join(' ')}", cwd="${processCwd}", packageRoot="${openclawDir}", bundledBin=${binPathExists ? 'yes' : 'no'})`,
   );
 
   return await new Promise<OpenClawDoctorResult>((resolve) => {
     const child = utilityProcess.fork(entryScript, args, {
-      cwd: openclawDir,
+      cwd: processCwd,
       stdio: 'pipe',
       env: {
         ...process.env,
@@ -144,7 +145,7 @@ async function runDoctorCommandWithArgs(
         stdout,
         stderr,
         command,
-        cwd: openclawDir,
+        cwd: processCwd,
         timedOut: true,
         error: `Timed out after ${OPENCLAW_DOCTOR_TIMEOUT_MS}ms`,
       });
@@ -174,7 +175,7 @@ async function runDoctorCommandWithArgs(
         stdout,
         stderr,
         command,
-        cwd: openclawDir,
+        cwd: processCwd,
         error: error instanceof Error ? error.message : String(error),
       });
     });
@@ -189,7 +190,7 @@ async function runDoctorCommandWithArgs(
         stdout,
         stderr,
         command,
-        cwd: openclawDir,
+        cwd: processCwd,
       });
     });
   });

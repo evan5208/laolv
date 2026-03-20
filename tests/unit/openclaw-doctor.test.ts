@@ -43,6 +43,7 @@ vi.mock('electron', () => ({
 vi.mock('@electron/utils/paths', () => ({
   getOpenClawDir: () => '/tmp/openclaw',
   getOpenClawEntryPath: () => '/tmp/openclaw/openclaw-entry.js',
+  getOpenClawProcessCwd: () => '/tmp/openclaw-workspace',
 }));
 
 vi.mock('@electron/utils/uv-env', () => ({
@@ -173,5 +174,24 @@ describe('openclaw doctor output handling', () => {
     expect(result.success).toBe(true);
     expect(result.command).toBe('openclaw doctor');
     expect(mockFork.mock.calls[0][1]).toEqual(['doctor']);
+  });
+
+  it('runs doctor from the user workspace instead of the package directory', async () => {
+    const child = new MockUtilityChild();
+    mockFork.mockReturnValue(child);
+
+    const { runOpenClawDoctor } = await import('@electron/utils/openclaw-doctor');
+    const resultPromise = runOpenClawDoctor();
+
+    await vi.waitFor(() => {
+      expect(mockFork).toHaveBeenCalledTimes(1);
+    });
+    child.emit('exit', 0);
+
+    const result = await resultPromise;
+    expect(mockFork.mock.calls[0][2]).toMatchObject({
+      cwd: '/tmp/openclaw-workspace',
+    });
+    expect(result.cwd).toBe('/tmp/openclaw-workspace');
   });
 });

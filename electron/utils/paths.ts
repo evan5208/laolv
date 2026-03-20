@@ -34,6 +34,13 @@ export function getOpenClawConfigDir(): string {
 }
 
 /**
+ * Get the default OpenClaw workspace directory.
+ */
+export function getOpenClawWorkspaceDir(): string {
+  return join(getOpenClawConfigDir(), 'workspace');
+}
+
+/**
  * Get OpenClaw skills directory
  */
 export function getOpenClawSkillsDir(): string {
@@ -98,6 +105,22 @@ export function getOpenClawDir(): string {
   }
   // Development: use node_modules/openclaw
   return join(__dirname, '../../node_modules/openclaw');
+}
+
+/**
+ * Get the working directory for OpenClaw child processes.
+ *
+ * In packaged builds we force a user-writable workspace so OpenClaw never
+ * falls back to the app installation directory as its default workspace.
+ */
+export function getOpenClawProcessCwd(): string {
+  if (!app.isPackaged) {
+    return getOpenClawDir();
+  }
+
+  const workspaceDir = getOpenClawWorkspaceDir();
+  ensureDir(workspaceDir);
+  return workspaceDir;
 }
 
 /**

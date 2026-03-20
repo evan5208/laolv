@@ -6,7 +6,7 @@ import { join } from 'path';
 import { getAllSettings } from '../utils/store';
 import { getApiKey, getDefaultProvider, getProvider } from '../utils/secure-storage';
 import { getProviderEnvVar, getKeyableProviderTypes } from '../utils/provider-registry';
-import { getOpenClawDir, getOpenClawEntryPath, isOpenClawPresent } from '../utils/paths';
+import { getOpenClawDir, getOpenClawEntryPath, getOpenClawProcessCwd, isOpenClawPresent } from '../utils/paths';
 import { getUvMirrorEnv } from '../utils/uv-env';
 import { listConfiguredChannels } from '../utils/channel-config';
 import { syncGatewayTokenToConfig, syncBrowserConfigToOpenClaw, sanitizeOpenClawConfig } from '../utils/openclaw-auth';
@@ -19,6 +19,7 @@ import { copyPluginFromNodeModules, fixupPluginManifest } from '../utils/plugin-
 export interface GatewayLaunchContext {
   appSettings: Awaited<ReturnType<typeof getAllSettings>>;
   openclawDir: string;
+  processCwd: string;
   entryScript: string;
   gatewayArgs: string[];
   forkEnv: Record<string, string | undefined>;
@@ -223,6 +224,7 @@ async function resolveChannelStartupPolicy(): Promise<{
 
 export async function prepareGatewayLaunchContext(port: number): Promise<GatewayLaunchContext> {
   const openclawDir = getOpenClawDir();
+  const processCwd = getOpenClawProcessCwd();
   const entryScript = getOpenClawEntryPath();
 
   if (!isOpenClawPresent()) {
@@ -275,6 +277,7 @@ export async function prepareGatewayLaunchContext(port: number): Promise<Gateway
   return {
     appSettings,
     openclawDir,
+    processCwd,
     entryScript,
     gatewayArgs,
     forkEnv,
